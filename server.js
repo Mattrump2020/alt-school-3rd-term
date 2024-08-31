@@ -22,14 +22,14 @@ app.use("/urlApi/users", userRouter);
 app.use("/urlApi/qrcode", qrRouter);
 
 
-app.all("*", (req, res) => {
-    res.status(404).jsonp({ message: "Page not found" });
-});
-
 app.get("/urlApi", (req, res) => {
     res.send("The Best UrlShortener");
 });
   
+app.all("*", (req, res) => {
+    res.status(404).jsonp({ message: "Page not found" });
+});
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
     console.log(`Sever is running on port ${PORT}...`)
